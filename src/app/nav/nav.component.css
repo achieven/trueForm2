@@ -1,0 +1,17 @@
+.nav
+{
+  background-color: #21506b;
+  border-radius: 5px;
+}
+.nav-side {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    float: right;
+    padding: 0 14px;
+    margin: 5px ;
+    }
+  .head-line{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom:2px;
+    font-size: 35px;
+    color: rgb(255, 255, 255);
+    }

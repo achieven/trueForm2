@@ -1,0 +1,103 @@
+
+<head>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+     <mat-card class="example-card">
+          <h1>Registration</h1>
+          <mat-card-actions>  
+            <div class="form-container form-1">
+
+              
+              <div [className]="eyes ? 'form password' : 'form'">
+                  <h2 style="margin-left: -20px;">Please add your detalis:</h2>
+                  <div [className]="eyes ? 'control password' : 'control'">
+                    <label for="name" [className]="eyes ? 'fa fa-user password' : 'fa fa-user'"></label>
+                    <input  [(ngModel)] = "name" 
+                            name = "name"
+                            type = "text"
+                            (click) = "showEyes()"
+                            [className]="eyes ? 'password' : ''"  
+                            matInput placeholder="Name" required>
+                  </div>
+                  <div *ngIf = "code == 'auth/invalid-name'" class="error">{{ message }}</div>
+                  <div *ngIf = "name == null" class="error">{{ required }}</div>
+
+                  <div [className]="eyes ? 'control password' : 'control'">
+                    <label for="nickname" [className]="eyes ? 'fa fa-user password' : 'fa fa-user'"></label>
+                    <input  [(ngModel)] = "nickname" 
+                            name = "nickname"
+                            type = "text"
+                            (click) = "showEyes()"
+                            [className]="eyes ? 'password' : ''"  
+                            matInput placeholder="Nickname" required>
+                  </div>
+                
+                  <div [className]="eyes ? 'control password' : 'control'">
+                  <label for="email" [className]="eyes ? 'fa fa-envelope password' : 'fa fa-envelope'"></label>
+                  <input  [(ngModel)] = "email" 
+                          name = "email" 
+                          id="email"
+                          type="email"
+                          [className]="eyes ? 'password' : ''" 
+                          (click) = "showEyes()"
+                          matInput placeholder="Email" required>
+                </div>
+                <div *ngIf = "code == 'auth/invalid-email'" class="error">{{ message }}</div>
+                <div *ngIf = "code == 'auth/email-already-in-use'" class="error">{{ message }}</div>
+                <div *ngIf = "email == null" class="error">{{ required }}</div>
+
+                <div [className]="eyes ? 'control password' : 'control'">
+                  <label for="password" [className]="eyes ? 'fa fa-lock password' : 'fa fa-lock'"></label>
+                  <input  class="input-1" 
+                          [type] = "hide ? 'password' : 'text'"
+                          id="password"
+                          [(ngModel)]="password" 
+                          name="password" 
+                          (keyup) = "passwordLen()" 
+                          placeholder="Password"
+                          (click) = "hideEyes()" 
+                          [className]="eyes ? 'password' : ''"
+                          matInput >
+                          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </div>
+                <br>
+                <div class="progress-bar_wrap">
+                  <div [className]="item1 ? 'pb item1 active' : 'pb item1'"></div>
+                  <div [className]="item2 ? 'pb item2 active' : 'pb item2'"></div>
+                  <div [className]="item3 ? 'pb item3 active' : 'pb item3'"></div>
+                </div>
+                <span class="progress-bar_text" >{{ pbText }}</span>
+                <br>
+                <div *ngIf = "code == 'auth/weak-password'" class="error">{{ message }}</div>
+                <div *ngIf = "password == '' && required" class="error">{{ required }}</div>
+
+                <div [className]="eyes ? 'control password' : 'control'">
+                  <label for="password" [className]="eyes ? 'fa fa-lock password' : 'fa fa-lock'"></label>
+                  <input  class="input-1" 
+                          [type] = "hide2 ? 'password' : 'text'"
+                          id="password2"
+                          [(ngModel)]="password2" 
+                          name="password2" 
+                          placeholder="Password"
+                          (click) = "hideEyes()" 
+                          [className]="eyes ? 'password' : ''"
+                          matInput >
+                          <mat-icon matSuffix (click)="hide2 = !hide2">{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </div>
+                        <div *ngIf = "password2 == '' && required" class="error">{{ required }}</div>
+                        <div *ngIf = "!passCheck" class="error">{{ passMes }}</div>
+      
+                <button mat-raised-button
+                        style="margin-left: -20px;" 
+                        (click)="signUp()">Register
+                </button>
+               
+              </div>
+            </div>
+          </mat-card-actions>
+    </mat-card>
+</body>
+
+

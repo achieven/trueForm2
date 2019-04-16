@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');  
+
+.example-full-width {
+  width: 100%;
+}
+
+.error {
+    color: red;
+    padding-top: -4px;
+}
+
+body 
+{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+
+.form-container 
+{
+  display: block;
+  width: 500px;
+  margin: 0px auto;
+  text-align: left;
+}
+
+lable 
+{
+  display: block;
+  position: relative;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+input[type='password'] 
+{
+  display: inline-block;
+  border-radius: 5px;
+  transition: .2s;
+}
+
+input[type='password']:focus 
+{
+  outline: none;
+   -moz-outline: none;
+   -webkit-outline: none;
+}
+
+lable:before 
+{
+  content: "\f070";
+  color: #aaa;
+  font-size: 22px;
+  font-family: FontAwesome;
+  position: absolute;
+  right: 25px;
+  top: 44px;
+}
+
+.owl {
+  margin: auto;
+  width: 211px;
+  height: 108px;
+  background-image: url('https://dash.readme.io/img/owl-login.png');
+  position: relative;
+}
+  .hand {
+    width: 34px;
+    height: 34px;
+    border-radius: 40px;
+    background-color: #472d20;
+    transform: scaleY(0.6);
+    position: absolute;
+    left: 14px;
+    bottom: -8px;
+    transition: 0.3s ease-out;
+  }
+    .hand.password {
+      transform: translateX(42px) translateY(-15px) scale(0.7);
+    }
+    .hand-r
+    {
+      left: 170px;
+    }
+    .hand-r.password {
+        transform: translateX(-42px) translateY(-15px) scale(0.7);
+      }
+  .arms {
+    position: absolute;
+    top: 58px;
+    height: 41px;
+    width: 100%;
+    overflow: hidden;
+  }
+    .arm {
+      width: 40px;
+      height: 65px;
+      background-image: url('https://dash.readme.io/img/owl-login-arm.png');
+      position: absolute;
+      left: 20px;
+      top: 40px;
+      transition: 0.3s ease-out;
+    }
+      .arm.password {
+        transform: translateX(40px) translateY(-40px);
+      }
+
+      .arm.arm-r {
+        left: 158px;
+        transform: scaleX(-1);
+      }
+      .arm.arm-r.password { 
+          transform: translateX(-40px) translateY(-40px) scaleX(-1);
+        } 
+.form {
+  margin: auto;
+  margin-top: -9px;
+  padding: 15px 55px;
+  width: 250px;
+  background-color: #a5af7f;
+  border-radius: 15px;
+}
+  .control {
+    margin-bottom: 10px;
+    position: relative;
+  }
+    label {
+      position: absolute;
+      font-size: 16px;
+      top: 11px;
+      left: 9px;
+      color: rgba(0,0,0,0.3);
+      margin-left: -20px;
+    }
+    input {
+      padding: 9px 6px 9px 30px;
+      border-radius: 4px;
+      border: 1px solid #cccccc;
+      font-size: 14px;
+      margin-left: -20px;
+      width:260px;
+      
+     }
+
+     mat-icon
+     {
+      margin-left: 240px;
+      margin-top: -30px;
+      position: absolute;
+     }
+
+     .example-form {
+      min-width: 150px;
+      max-width: 500px;
+      width: 100%;
+    }
+  
+    mat-card
+    {
+      max-width: 510px;
+      padding: 25px;
+      display: block;
+      margin: 10px auto;
+
+    }
+      
+.progress-bar_wrap {
+  width: 295px;
+  height: 5px;
+  background: #95c3dd;
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-left: -18px;
+  margin-top: -50px;
+}
+.form-1 .pb {
+  display: inline-block;
+height: 100%;
+width: 32.5%;
+margin-right: .8%;
+border-radius: 5px;
+float: left;
+}
+
+.form-1 .active {
+  visibility: visible;
+}
+
+.pb.item1.active {
+  background-color: #FF4B47 !important;
+}
+
+.pb.item2.active  {
+  background-color: #F9AE35 !important;
+}
+
+.pb.item3.active  {
+  background-color: #2DAF7D !important;
+}
+.progress-bar_text {
+  display: flex;
+  color: rgb(83, 83, 83);
+  margin-left: 75px;
+  margin-top: -20px;
+  transition: .2s;
+}

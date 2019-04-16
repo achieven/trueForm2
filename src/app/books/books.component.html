@@ -1,0 +1,36 @@
+<mat-card>
+  <div *ngIf = "!(authService.user | async)">
+    <h3 style = "text-align: center;"><a routerLink = "/register">Register</a> or <a routerLink="/login">Login</a> to manage your reading list</h3>
+  </div>
+
+  <div *ngIf = "(authService.user | async)">
+    <h1 style = "text-align: center;">Welcome {{ nickname }}!</h1>
+    <img mat-card-image class="img" src="./assets/img/owl-read.gif" alt="owl read gif">
+
+  <mat-card-content>
+      <br>
+      <mat-card-subtitle class="sub2">
+      Your Books list:
+      </mat-card-subtitle>
+      <book class="checkbox" *ngFor = "let book of books"
+             [data] = "book">
+      </book>
+  </mat-card-content>
+
+  <h3>Add Book to your book list:</h3>
+  <mat-card-actions>
+    <form class="example-form" >
+      <mat-form-field class="example-full-width">
+        <input [(ngModel)] = "bookName" name = "bookName" matInput placeholder="Add book name" value="" >
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <input [(ngModel)] = "author" name = "author" matInput placeholder="Add author name" value="" >
+      </mat-form-field>
+      <div>
+          <button mat-raised-button (click) = "addBook()" >Add Book</button>
+      </div>      
+    </form>  
+  </mat-card-actions>
+</div>
+</mat-card>

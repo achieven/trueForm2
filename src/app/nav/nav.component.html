@@ -1,0 +1,38 @@
+<mat-card>
+<mat-toolbar class="nav">
+  <mat-toolbar-row>
+    <h1 class="head-line">PicAPP</h1>
+    <div style="display: flex; justify-content: flex-end; flex: 1 1 auto;"> 
+      
+      <button  mat-raised-button 
+              class="nav-side" 
+              (click)= "toBooks()">
+        score
+    </button>
+
+    <button   *ngIf = "!(authService.user | async)"
+              mat-raised-button 
+              class="nav-side" 
+              (click)= "toRegister()">
+        Register
+    </button>
+
+    
+    <button  *ngIf = "!(authService.user | async)"
+              mat-raised-button 
+              class="nav-side" 
+              (click)= "toLogin()">
+        Login
+    </button>
+
+    <button *ngIf = "(authService.user | async)"
+            mat-raised-button 
+            class="nav-side" 
+            (click)="toLogout()">
+      Logout
+   </button>     
+        
+  </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+</mat-card>

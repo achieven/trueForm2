@@ -1,0 +1,32 @@
+<li (mouseenter) = "showButton()"
+    (mouseleave) = "hideButton()"
+    style="list-style-type:none">
+    <mat-checkbox class = "checkbox"
+      [(ngModel)]="read"
+      (change) = "checkChange()">
+    </mat-checkbox>  
+    <br>
+    <span   *ngIf = "!showEditField"
+            (click) = "showEdit()"> Book name: {{ bookName }} </span>
+            <br>
+            <span   *ngIf = "showTheAuthor && !showEditField"
+            (click) = "showEdit()"> Author: {{ author }} </span>
+    
+
+    <mat-form-field *ngIf = "showEditField">
+        <input [(ngModel)] = "bookName" matInput >
+    </mat-form-field>
+    <br>
+    <mat-form-field *ngIf = "showEditField">
+      <input [(ngModel)] = "author" matInput >
+  </mat-form-field>
+
+    <button mat-raised-button
+            *ngIf = "showEditField"
+            (click) = "save()">Save</button>
+
+    <button mat-raised-button
+            *ngIf = "showEditField"
+            (click) = "cancel()">Cancel</button>        
+
+</li>

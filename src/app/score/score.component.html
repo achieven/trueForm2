@@ -1,0 +1,21 @@
+<mat-card>
+    <div *ngIf = "!(authService.user | async)">
+        <h3 style = "text-align: center;"><a routerLink = "/register">Register</a> or <a routerLink="/login">Login</a> to manage your reading list</h3>
+      </div>
+    
+      <div *ngIf = "(authService.user | async)">
+        <h1 style = "text-align: center;">Welcome {{(authService.user | async)?.displayName }} !</h1>
+
+<font>
+  kfir: 20
+  inbal:10
+</font>
+<br><br>
+<button 
+class="nav-side" 
+mat-raised-button
+(click)= "toQuiz()">
+Start New Game
+</button>
+</div>
+</mat-card>
