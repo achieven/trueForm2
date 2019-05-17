@@ -62,7 +62,7 @@
             <input id="{{Option.id}}" type="checkbox" disabled="disabled" [(ngModel)]="Option.selected" /> {{Option.name}}
           </div>
         </div>
-        <div class="p-1 m-2 alert {{ isCorrect(question) ? 'alert-success': 'alert-danger'}}">Your answer is {{isCorrect(question) ? 'correct' : 'wrong'}}.</div>
+        <div class="p-1 m-2 alert {{ isCorrect(question) ? 'alert-success': 'alert-danger'}}">Your answer is {{isCorrect(question) ? 'correct!' : 'wrong. Correct answer is ' + correctAnswer(question)}}.</div>
       </div>
     </div>
     <h4 class="alert alert-info text-center">You may close this window now.</h4>

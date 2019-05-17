@@ -117,6 +117,10 @@ export class QuizComponent implements OnInit {
     return question.options.every(x => x.selected === x.isAnswer);
   };
 
+  correctAnswer(question: Question) : string {
+    return question.options.find(x => x.isAnswer).name;
+  };
+
   async onSubmit() {
     // Post your data to the server here. answers contains the questionId and the users' answer.
     this.mode = 'submitting';
