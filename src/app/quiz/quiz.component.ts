@@ -5,7 +5,7 @@ import { Option, Question, Quiz, QuizConfig } from '../models/index';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
-export interface Score { score: number; user: string, timestamp: Date }
+import { Score } from '../score/score.component';
 
 
 @Component({
@@ -62,6 +62,7 @@ export class QuizComponent implements OnInit {
     this.quizService.get(quizName).subscribe(res => {
       this.quiz = new Quiz(res);
       this.pager.count = this.quiz.questions.length;
+      this.pager.index = 0;
       this.startTime = new Date();
       this.timer = setInterval(() => { this.tick(); }, 1000);
       this.duration = this.parseTime(this.config.duration);
@@ -72,7 +73,7 @@ export class QuizComponent implements OnInit {
   tick() {
     const now = new Date();
     const diff = (now.getTime() - this.startTime.getTime()) / 1000;
-    if (diff >= this.config.duration) {
+    if (diff >= this.config.duration && 'quiz' === this.mode) {
       this.onSubmit();
     }
     this.ellapsedTime = this.parseTime(diff);
@@ -118,10 +119,10 @@ export class QuizComponent implements OnInit {
 
   async onSubmit() {
     // Post your data to the server here. answers contains the questionId and the users' answer.
-
+    this.mode = 'submitting';
     const score: number = this.quiz.questions.filter(question => this.isCorrect(question)).length;
     try {
-      await this.scoresCollection.add({score: score, user:  this.authService.getUser().displayName, timestamp: new Date()});
+      await this.scoresCollection.add({score: score, user:  this.authService.getUser().displayName, timestamp: new Date(), quizName: this.quizService.getAll().find(quiz => quiz.id === this.quizName).name});
       this.mode = 'result';
     } catch (err) {
       console.log(err);

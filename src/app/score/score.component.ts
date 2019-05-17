@@ -4,9 +4,9 @@ import { AuthService } from '../auth.service';
 import  { AngularFireDatabase } from '@angular/fire/database';
 
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import {Score} from '../quiz/quiz.component';
 import {map} from 'rxjs/operators';
 
+export interface Score { score: number; user: string, timestamp: Date, quizName: string }
 
 @Component({
   selector: 'app-score',

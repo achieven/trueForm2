@@ -7,18 +7,24 @@
         <h1 style = "text-align: center;">Welcome {{(authService.user | async)?.displayName}} !</h1>
 
     <mat-table [dataSource]="scores">
-      <ng-container cdkColumnDef="user">
-        <mat-header-cell *cdkHeaderCellDef> User </mat-header-cell>
-        <mat-cell *cdkCellDef="let row"> {{row.user}} </mat-cell>
-      </ng-container>
 
       <ng-container cdkColumnDef="score">
         <mat-header-cell *cdkHeaderCellDef> Score </mat-header-cell>
         <mat-cell *cdkCellDef="let row"> {{row.score}} </mat-cell>
       </ng-container>
 
-      <mat-header-row *cdkHeaderRowDef="['user','score']"></mat-header-row>
-      <mat-row *cdkRowDef="let row; columns: ['user','score']"></mat-row>
+      <ng-container cdkColumnDef="user">
+        <mat-header-cell *cdkHeaderCellDef> User </mat-header-cell>
+        <mat-cell *cdkCellDef="let row"> {{row.user}} </mat-cell>
+      </ng-container>
+
+      <ng-container cdkColumnDef="quizName">
+        <mat-header-cell *cdkHeaderCellDef> Quiz </mat-header-cell>
+        <mat-cell *cdkCellDef="let row"> {{row.quizName}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *cdkHeaderRowDef="['user','score', 'quizName']"></mat-header-row>
+      <mat-row *cdkRowDef="let row; columns: ['user','score', 'quizName']"></mat-row>
     </mat-table>
 
 <br><br>
