@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../services/quiz.service';
-import { HelperService } from '../services/helper.service';
+import { AuthService } from '../auth.service';
 import { Option, Question, Quiz, QuizConfig } from '../models/index';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
+export interface Score { score: number; user: string, timestamp: Date }
+
 
 @Component({
   selector: 'app-quiz',
@@ -39,7 +44,13 @@ export class QuizComponent implements OnInit {
   ellapsedTime = '00:00';
   duration = '';
 
-  constructor(private quizService: QuizService) { }
+  scores: Observable<any[]>;
+  private scoresCollection: AngularFirestoreCollection<Score>;
+
+  constructor(private quizService: QuizService, db: AngularFirestore, private authService: AuthService) {
+    this.scoresCollection = db.collection<Score>('scores');
+    this.scores = db.collection('scores').valueChanges();
+  }
 
   ngOnInit() {
     this.quizes = this.quizService.getAll();
@@ -97,21 +108,26 @@ export class QuizComponent implements OnInit {
     }
   }
 
-  isAnswered(question: Question) {
-    return question.options.find(x => x.selected) ? 'Answered' : 'Not Answered';
+  isAnswered(question: Question): Boolean {
+    return question.options.find(x => x.selected) ? true : false;
   };
 
-  isCorrect(question: Question) {
-    return question.options.every(x => x.selected === x.isAnswer) ? 'correct' : 'wrong';
+  isCorrect(question: Question) : Boolean {
+    return question.options.every(x => x.selected === x.isAnswer);
   };
 
-  onSubmit() {
-    let answers = [];
-    this.quiz.questions.forEach(x => answers.push({ 'quizId': this.quiz.id, 'questionId': x.id, 'answered': x.answered }));
-
+  async onSubmit() {
     // Post your data to the server here. answers contains the questionId and the users' answer.
-    console.log(this.quiz.questions);
-    this.mode = 'result';
+
+    const score: number = this.quiz.questions.filter(question => this.isCorrect(question)).length;
+    try {
+      await this.scoresCollection.add({score: score, user:  this.authService.getUser().displayName, timestamp: new Date()});
+      this.mode = 'result';
+    } catch (err) {
+      console.log(err);
+    }
+
+
   }
 }
 

@@ -20,9 +20,9 @@ export class NavComponent implements OnInit {
     this.router.navigate(['/register']);
   }
 
-  toBooks()
+  toScores()
   {
-    this.router.navigate(['/books']);
+    this.router.navigate(['/score']);
   }
 
   toLogout()

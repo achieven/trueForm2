@@ -43,7 +43,9 @@ export class AuthService {
     ref.child('users').push({'nickname':nickname});
   }
 
-  
+  getUser() {
+    return this.fireBaseAuth.auth.currentUser;
+  }
 
   user: Observable<firebase.User>;
   

@@ -1,3 +1,10 @@
+<mat-card>
+  <div *ngIf = "!(authService.user | async)">
+    <h3 style = "text-align: center;"><a routerLink = "/register">Register</a> or <a routerLink="/login">Login</a> to manage your reading list</h3>
+  </div>
+
+  <div *ngIf = "(authService.user  | async)">
+
 <div class="row">
   <div class="col-6">
     <h3>Quiz Application</h3>
@@ -42,7 +49,7 @@
 
   <div class="row text-center" *ngIf="mode=='review'">
     <div class="col-4 cursor-pointer" *ngFor="let question of quiz.questions; let index = index;">
-      <div (click)="goTo(index)" class="p-3 mb-2 {{ isAnswered(question) == 'Answered'? 'bg-info': 'bg-warning' }}">{{index + 1}}. {{ isAnswered(question) }}</div>
+      <div (click)="goTo(index)" class="p-3 mb-2 {{ isAnswered(question)? 'bg-info': 'bg-warning' }}">{{index + 1}}. {{ isAnswered(question) ? 'Answered' : 'Not Answered' }}</div>
     </div>
   </div>
   <div class="result" *ngIf="mode=='result'">
@@ -55,7 +62,7 @@
             <input id="{{Option.id}}" type="checkbox" disabled="disabled" [(ngModel)]="Option.selected" /> {{Option.name}}
           </div>
         </div>
-        <div class="p-1 m-2 alert {{ isCorrect(question) == 'correct'? 'alert-success': 'alert-danger'}}">Your answer is {{isCorrect(question)}}.</div>
+        <div class="p-1 m-2 alert {{ isCorrect(question) ? 'alert-success': 'alert-danger'}}">Your answer is {{isCorrect(question) ? 'correct' : 'wrong'}}.</div>
       </div>
     </div>
     <h4 class="alert alert-info text-center">You may close this window now.</h4>
@@ -67,3 +74,4 @@
     <button class="btn btn-primary" (click)="onSubmit();">Submit Quiz</button>
   </div>
 </div>
+  </div>
