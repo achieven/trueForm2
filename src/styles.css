@@ -29,3 +29,8 @@ html {
 .clear {
   clear: both;
 }
+
+.info {
+  padding-top: 10px;
+  color: blue;
+}

@@ -68,6 +68,7 @@
         </div>
         <div class="clear"></div>
         <div class="{{ isCorrect(question) ? 'success': 'error'}}">Your answer is {{isCorrect(question) ? 'correct!' : 'wrong'}}.</div>
+        <div class="info" *ngIf="isCorrect(question) ">{{question.info}}</div>
       </div>
     </div>
     <h4 class="alert alert-info text-center">You may close this window now.</h4>
