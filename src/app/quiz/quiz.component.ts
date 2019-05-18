@@ -74,7 +74,7 @@ export class QuizComponent implements OnInit {
     const now = new Date();
     const diff = (now.getTime() - this.startTime.getTime()) / 1000;
     if (diff >= this.config.duration && 'quiz' === this.mode) {
-      this.onSubmit();
+      this.goTo(this.pager.index + 1);
     }
     this.ellapsedTime = this.parseTime(diff);
   }
@@ -106,6 +106,10 @@ export class QuizComponent implements OnInit {
     if (index >= 0 && index < this.pager.count) {
       this.pager.index = index;
       this.mode = 'quiz';
+      this.startTime = new Date();
+    }
+    if (index >= this.pager.count) {
+      this.onSubmit();
     }
   }
 
@@ -115,10 +119,6 @@ export class QuizComponent implements OnInit {
 
   isCorrect(question: Question) : Boolean {
     return question.options.every(x => x.selected === x.isAnswer);
-  };
-
-  correctAnswer(question: Question) : string {
-    return question.options.find(x => x.isAnswer).name;
   };
 
   async onSubmit() {

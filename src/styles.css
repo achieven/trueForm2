@@ -5,3 +5,27 @@
 html {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
+
+.left {
+  float: left;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.selected {
+  background-color: red;
+}
+
+.success {
+  color: green;
+}
+
+.error {
+ color: red;
+}
+
+.clear {
+  clear: both;
+}

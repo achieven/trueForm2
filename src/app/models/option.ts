@@ -1,7 +1,7 @@
 export class Option {
     id: number;
     questionId: number;
-    name: string;
+    src: string;
     isAnswer: boolean;
     selected: boolean;
 
@@ -9,7 +9,7 @@ export class Option {
         data = data || {};
         this.id = data.id;
         this.questionId = data.questionId;
-        this.name = data.name;
+        this.src = data.src;
         this.isAnswer = data.isAnswer;
     }
 }
