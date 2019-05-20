@@ -5,10 +5,18 @@
     <div style="display: flex; justify-content: flex-end; flex: 1 1 auto;">
 
       <button  mat-raised-button
-              class="nav-side" 
+              class="nav-side"
+               *ngIf="router.url !== '/score'"
               (click)= "toScores()">
         score
     </button>
+
+      <button  mat-raised-button
+               class="nav-side"
+               *ngIf="router.url == '/score'"
+               (click)= "toQuiz()">
+        quiz
+      </button>
 
     <button   *ngIf = "!(authService.user | async)"
               mat-raised-button 

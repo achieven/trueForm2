@@ -25,6 +25,11 @@ export class NavComponent implements OnInit {
     this.router.navigate(['/score']);
   }
 
+  toQuiz()
+  {
+    this.router.navigate(['/quiz']);
+  }
+
   toLogout()
   {
     this.authService.logout()
