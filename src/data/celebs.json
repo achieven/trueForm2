@@ -12,13 +12,13 @@
                 {
                     "id": 1055,
                     "questionId": 1010,
-                    "src": "https://d1icd6shlvmxi6.cloudfront.net/gsc/GZBTYJ/ee/c1/d7/eec1d74a84fd47289e7a352f2df911c7/images/start_to_play/u71.png?token=57e86a78a7911e33cff2395460ef3369345a5c7745633075924849fb29892d11",
+                    "src": "/assets/img/barack_obama.png",
                     "isAnswer": true
                 },
                 {
                     "id": 1056,
                     "questionId": 1010,
-                    "src": "https://d1icd6shlvmxi6.cloudfront.net/gsc/GZBTYJ/ee/c1/d7/eec1d74a84fd47289e7a352f2df911c7/images/start_to_play/u72.png?token=5eff5f60519102303aa8cb7653b319187103439165adf8649627e2b9de47fdc7",
+                    "src": "/assets/img/barack_obama_dopple.png",
                     "isAnswer": false
                 }
             ],
@@ -37,13 +37,13 @@
                 {
                     "id": 1055,
                     "questionId": 1010,
-                    "src": "https://d1icd6shlvmxi6.cloudfront.net/gsc/GZBTYJ/ee/c1/d7/eec1d74a84fd47289e7a352f2df911c7/images/start_to_play__1_/u106.png?token=719f701211c2366065b2e28653e259c63e7fe516223f67351ee6c9a231c08455",
+                    "src": "/assets/img/angelina_jolie_dopple.png",
                     "isAnswer": true
                 },
                 {
                     "id": 1057,
                     "questionId": 1010,
-                    "src": "https://d1icd6shlvmxi6.cloudfront.net/gsc/GZBTYJ/ee/c1/d7/eec1d74a84fd47289e7a352f2df911c7/images/start_to_play__1_/u107.png?token=e84b03d5ca3cbbc68645fc7581d865da30089f6df070d2c11f1ea7cb655c450f",
+                    "src": "/assets/img/angelina_jolie.png",
                     "isAnswer": false
                 }
             ],

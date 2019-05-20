@@ -3,9 +3,10 @@ import { QuizService } from '../services/quiz.service';
 import { AuthService } from '../auth.service';
 import { Option, Question, Quiz, QuizConfig } from '../models/index';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
 
 import { Score } from '../score/score.component';
+import {map} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class QuizComponent implements OnInit {
     'allowBack': true,
     'allowReview': true,
     'autoMove': false,  // if true, it will move to next question automatically when answered.
-    'duration': 20,  // indicates the time (in secs) in which quiz needs to be completed. 0 means unlimited.
+    'duration': 60,  // indicates the time (in secs) in which quiz needs to be completed. 0 means unlimited.
     'pageSize': 1,
     'requiredAll': false,  // indicates if you must answer all the questions before submitting.
     'richText': false,
@@ -44,18 +45,26 @@ export class QuizComponent implements OnInit {
   ellapsedTime = '00:00';
   duration = '';
 
-  scores: Observable<any[]>;
+
+  scores: Array<Score>;
   private scoresCollection: AngularFirestoreCollection<Score>;
 
-  constructor(private quizService: QuizService, db: AngularFirestore, private authService: AuthService) {
-    this.scoresCollection = db.collection<Score>('scores');
-    this.scores = db.collection('scores').valueChanges();
+  constructor(private quizService: QuizService, private router: Router, db: AngularFirestore, private authService: AuthService) {
+    this.scoresCollection = db.collection('scores',ref => ref.orderBy('score', 'desc'));
   }
 
   ngOnInit() {
     this.quizes = this.quizService.getAll();
     this.quizName = this.quizes[0].id;
     this.loadQuiz(this.quizName);
+    this.getScores().subscribe((res) => {
+      this.scores = res;
+    });
+  }
+
+  toScores()
+  {
+    this.router.navigate(['/score']);
   }
 
   loadQuiz(quizName: string) {
@@ -74,7 +83,7 @@ export class QuizComponent implements OnInit {
     const now = new Date();
     const diff = (now.getTime() - this.startTime.getTime()) / 1000;
     if (diff >= this.config.duration && 'quiz' === this.mode) {
-      this.goTo(this.pager.index + 1);
+      // this.answer();
     }
     this.ellapsedTime = this.parseTime(diff);
   }
@@ -113,9 +122,9 @@ export class QuizComponent implements OnInit {
     }
   }
 
-  isAnswered(question: Question): Boolean {
-    return question.options.find(x => x.selected) ? true : false;
-  };
+  answer() {
+    this.mode = 'answer';
+  }
 
   isCorrect(question: Question) : Boolean {
     return question.options.every(x => x.selected === x.isAnswer);
@@ -131,8 +140,27 @@ export class QuizComponent implements OnInit {
     } catch (err) {
       console.log(err);
     }
+  }
 
+  getScore() {
+    return this.quiz.questions.map((question => {
+      return this.isCorrect(question) ? 1 : 0;
+    })).reduce((prev, elem) =>{
+      return prev + elem;
+    }, 0);
+  }
 
+  getScores() {
+    return this.scoresCollection.snapshotChanges().pipe(
+      map((actions) => {
+        return actions.map((a) => {
+          const data = a.payload.doc.data();
+          return { id: a.payload.doc.id, ...data };
+        }).filter(data => {
+          return data.user === this.authService.getUser().displayName;
+        });
+      })
+    );
   }
 }
 

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import  { AngularFireDatabase } from '@angular/fire/database';
 
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import {map} from 'rxjs/operators';
@@ -24,7 +23,7 @@ export class ScoreComponent implements OnInit {
 
 
 
-  constructor(db: AngularFirestore, db2: AngularFireDatabase, private router: Router, public authService: AuthService) {
+  constructor(db: AngularFirestore, private router: Router, public authService: AuthService) {
     this.scoresCollection = db.collection('scores',ref => ref.orderBy('score', 'desc'));
   }
 
