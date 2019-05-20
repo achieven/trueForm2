@@ -23,7 +23,7 @@ export class QuizComponent implements OnInit {
     'allowBack': true,
     'allowReview': true,
     'autoMove': false,  // if true, it will move to next question automatically when answered.
-    'duration': 60,  // indicates the time (in secs) in which quiz needs to be completed. 0 means unlimited.
+    'duration': 20,  // indicates the time (in secs) in which quiz needs to be completed. 0 means unlimited.
     'pageSize': 1,
     'requiredAll': false,  // indicates if you must answer all the questions before submitting.
     'richText': false,
@@ -83,7 +83,7 @@ export class QuizComponent implements OnInit {
     const now = new Date();
     const diff = (now.getTime() - this.startTime.getTime()) / 1000;
     if (diff >= this.config.duration && 'quiz' === this.mode) {
-      // this.answer();
+      this.answer();
     }
     this.ellapsedTime = this.parseTime(diff);
   }
