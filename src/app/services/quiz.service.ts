@@ -17,7 +17,7 @@ export class QuizService {
     return [
       { id: 'data/celebs1.json', name: 'quiz 1' },
       { id: 'data/celebs2.json', name: 'quiz 2' },
-      { id: 'data/celebs2.json', name: 'quiz 3' }
+      { id: 'data/celebs3.json', name: 'quiz 3' }
     ];
   }
 
