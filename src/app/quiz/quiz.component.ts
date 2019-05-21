@@ -3,6 +3,8 @@ import { QuizService } from '../services/quiz.service';
 import { AuthService } from '../auth.service';
 import { Option, Question, Quiz, QuizConfig } from '../models/index';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AnswerDialogComponent } from './answer-dialog.component';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
 
 import { Score } from '../score/score.component';
 import {map} from 'rxjs/operators';
@@ -49,7 +51,7 @@ export class QuizComponent implements OnInit {
   scores: Array<Score>;
   private scoresCollection: AngularFirestoreCollection<Score>;
 
-  constructor(private quizService: QuizService, private router: Router, db: AngularFirestore, private authService: AuthService) {
+  constructor(private quizService: QuizService, private router: Router, db: AngularFirestore, private authService: AuthService, private dialog: MatDialog) {
     this.scoresCollection = db.collection('scores',ref => ref.orderBy('score', 'desc'));
   }
 
@@ -80,6 +82,7 @@ export class QuizComponent implements OnInit {
       this.pager.count = this.quiz.questions.length;
       this.pager.index = 0;
       this.startTime = new Date();
+      this.tick();
       this.timer = setInterval(() => { this.tick(); }, 1000);
       this.duration = this.parseTime(this.config.duration);
     });
@@ -123,6 +126,8 @@ export class QuizComponent implements OnInit {
       this.pager.index = index;
       this.mode = 'quiz';
       this.startTime = new Date();
+      this.tick();
+      this.timer = setInterval(() => { this.tick(); }, 1000);
     }
     if (index >= this.pager.count) {
       this.onSubmit();
@@ -130,7 +135,18 @@ export class QuizComponent implements OnInit {
   }
 
   answer() {
-    this.mode = 'answer';
+    clearInterval(this.timer);
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = {
+      isCorrect: this.isCorrect(this.quiz.questions[this.pager.index]),
+      info: this.quiz.questions[this.pager.index].info
+    };
+
+    const dialogRef = this.dialog.open(AnswerDialogComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(() => {
+      this.goTo(this.pager.index + 1);
+    })
   }
 
   isCorrect(question: Question) : Boolean {

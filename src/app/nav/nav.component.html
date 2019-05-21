@@ -20,22 +20,23 @@
         quiz
       </button>
     </div>
+      <div *ngIf="!(authService.user | async)">
+        <button   *ngIf = "router.url !== '/register'"
+                  mat-raised-button
+                  class="nav-side"
+                  (click)= "toRegister()">
+            Register
+        </button>
+      </div>
 
-
-    <button   *ngIf = "!(authService.user | async)"
-              mat-raised-button 
-              class="nav-side" 
-              (click)= "toRegister()">
-        Register
-    </button>
-
-    
-    <button  *ngIf = "!(authService.user | async)"
-              mat-raised-button 
-              class="nav-side" 
-              (click)= "toLogin()">
-        Login
-    </button>
+      <div *ngIf="!(authService.user | async)">
+        <button  *ngIf = "router.url !== '/login'"
+                  mat-raised-button
+                  class="nav-side"
+                  (click)= "toLogin()">
+            Login
+        </button>
+      </div>
 
     <button *ngIf = "(authService.user | async)"
             mat-raised-button 

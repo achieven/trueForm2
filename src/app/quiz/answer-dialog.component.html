@@ -1,0 +1,13 @@
+
+<div class="{{ data.isCorrect ? 'success' : 'error'}}">Your answer is {{data.isCorrect ? 'correct!' : 'wrong'}}.</div>
+<div class="info" *ngIf="data.isCorrect">{{data.info}}</div>
+<div class="text-center">
+
+  <!--<button *ngIf="pager.index < pager.count - 1"  class="btn btn-primary" (click)="goTo(pager.index + 1);">Next</button>-->
+  <!--<button *ngIf="pager.index >= pager.count - 1" class="btn btn-primary" (click)="onSubmit();">Finish</button>-->
+  <!--<pagination *ngIf="config.showPager" direction-links="false" total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" ng-change="pageChanged()"></pagination>-->
+</div>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button"(click)="close()">Close</button>
+</mat-dialog-actions>

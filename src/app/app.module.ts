@@ -21,6 +21,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table'
 import { CdkTableModule} from '@angular/cdk/table';
+import { MatDialogModule} from '@angular/material';
 
 
 import { AppComponent } from './app.component';
@@ -32,6 +33,7 @@ import { RegisterComponent } from './register/register.component';
 import { ScoreComponent } from './score/score.component';
 import { PicComponent } from './pic/pic.component';
 import { QuizComponent } from './quiz/quiz.component';
+import { AnswerDialogComponent } from './quiz/answer-dialog.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -46,7 +48,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     ScoreComponent,
     PicComponent,
-    QuizComponent
+    QuizComponent,
+    AnswerDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +64,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatCheckboxModule,
     MatTableModule,
     CdkTableModule,
+    MatDialogModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
@@ -76,6 +80,7 @@ import { HttpClientModule } from '@angular/common/http';
     ])
   ],
   providers: [AngularFirestore],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AnswerDialogComponent]
 })
 export class AppModule { }

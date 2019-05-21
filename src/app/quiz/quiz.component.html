@@ -24,7 +24,7 @@
     </div>
   </div>
   <h2 *ngIf="mode === 'quiz' || mode === 'result'" class="text-center font-weight-normal">{{quiz.name}}</h2>
-  <div *ngIf="mode=='quiz' && quiz">
+  <div *ngIf="mode=='quiz'&& quiz">
     <div *ngFor="let question of filteredQuestions;">
       <div class="badge badge-info">Question {{pager.index + 1}} of {{pager.count}}.</div>
       <div *ngIf="config.duration" class="badge badge-info float-right">Time: {{ellapsedTime}} / {{duration}}</div>
@@ -47,17 +47,6 @@
       <!--<pagination *ngIf="config.showPager" direction-links="false" total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" ng-change="pageChanged()"></pagination>-->
     </div>
 
-  </div>
-
-  <div *ngIf="mode=='answer' && quiz">
-    <div class="{{ isCorrect(quiz.questions[pager.index]) ? 'success': 'error'}}">Your answer is {{isCorrect(quiz.questions[pager.index]) ? 'correct!' : 'wrong'}}.</div>
-    <div class="info" *ngIf="isCorrect(quiz.questions[pager.index]) ">{{quiz.questions[pager.index].info}}</div>
-    <div class="text-center">
-
-      <button *ngIf="pager.index < pager.count - 1"  class="btn btn-primary" (click)="goTo(pager.index + 1);">Next</button>
-      <button *ngIf="pager.index >= pager.count - 1" class="btn btn-primary" (click)="onSubmit();">Finish</button>
-      <!--<pagination *ngIf="config.showPager" direction-links="false" total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" ng-change="pageChanged()"></pagination>-->
-    </div>
   </div>
 
   <div class="result" *ngIf="mode=='result'">
