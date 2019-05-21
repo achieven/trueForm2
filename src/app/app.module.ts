@@ -66,13 +66,13 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: 'score', pathMatch: 'full'},
+      { path: '', redirectTo: 'quiz', pathMatch: 'full'},
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'score', component: ScoreComponent },
       { path: 'pic', component: PicComponent },
       { path: 'quiz', component: QuizComponent },
-      { path: '**', redirectTo: 'score', pathMatch: 'full' }
+      { path: '**', redirectTo: 'quiz', pathMatch: 'full' }
     ])
   ],
   providers: [AngularFirestore],
