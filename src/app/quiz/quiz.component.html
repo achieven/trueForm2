@@ -5,19 +5,25 @@
 
   <div *ngIf = "(authService.user  | async)">
 
-<div class="row">
-  <div class="">
-    <h3>Quiz Application</h3>
-  </div>
-  <div class="text-right">
-    Select Quiz:
-    <select [(ngModel)]="quizName" (change)="loadQuiz(quizName)">
-      <option *ngFor="let quiz of quizes" [value]="quiz.id">{{quiz.name}}</option>
-    </select>
-  </div>
-</div>
 <div id="quiz">
-  <h2 class="text-center font-weight-normal">{{quiz.name}}</h2>
+  <div *ngIf="mode === 'before'" class="row">
+    <button
+      class="nav-side"
+      mat-raised-button
+      (click)= "start()">
+      Start Quiz
+    </button>
+    <div class="">
+      <h3>Quiz Application</h3>
+    </div>
+    <div class="text-right">
+      Select Quiz:
+      <select [(ngModel)]="quizName" (change)="stop()">
+        <option *ngFor="let quiz of quizes" [value]="quiz.id">{{quiz.name}}</option>
+      </select>
+    </div>
+  </div>
+  <h2 *ngIf="mode === 'quiz' || mode === 'result'" class="text-center font-weight-normal">{{quiz.name}}</h2>
   <div *ngIf="mode=='quiz' && quiz">
     <div *ngFor="let question of filteredQuestions;">
       <div class="badge badge-info">Question {{pager.index + 1}} of {{pager.count}}.</div>
@@ -85,6 +91,12 @@
       mat-raised-button
       (click)= "toScores()">
       See all users scores
+    </button>
+    <button
+      class="nav-side"
+      mat-raised-button
+      (click)= "mode = 'before'">
+      Start new quiz
     </button>
   </div>
 </div>

@@ -1,0 +1,257 @@
+{
+    "id": 1,
+    "name": "quiz 2",
+    "description": "Celebs",
+    "questions": [
+      {
+          "id": 1010,
+          "name": "Who is Barack Obama?",
+          "questionTypeId": 1,
+          "info": "Did you know? Studies show that sleep during courses helps to produce better grades",
+          "options": [
+              {
+                  "id": 1055,
+                  "questionId": 1010,
+                  "src": "/assets/img/barack_obama.png",
+                  "isAnswer": true
+              },
+              {
+                  "id": 1056,
+                  "questionId": 1010,
+                  "src": "/assets/img/barack_obama_dopple.png",
+                  "isAnswer": false
+              }
+          ],
+          "questionType": {
+              "id": 1,
+              "name": "Multiple Choice",
+              "isActive": true
+          }
+      },
+      {
+        "id": 1011,
+        "name": "Who is NOT Angelina Jolie?",
+        "questionTypeId": 1,
+        "info": "Yeah! Now you can see how many points earned",
+        "options": [
+          {
+            "id": 1055,
+            "questionId": 1011,
+            "src": "/assets/img/angelina_jolie_dopple.png",
+            "isAnswer": true
+          },
+          {
+            "id": 1057,
+            "questionId": 1011,
+            "src": "/assets/img/angelina_jolie.png",
+            "isAnswer": false
+          }
+        ],
+        "questionType": {
+          "id": 1,
+          "name": "Multiple Choice",
+          "isActive": true
+        }
+      },
+      {
+        "id": 1011,
+        "name": "Who is NOT Angelina Jolie?",
+        "questionTypeId": 1,
+        "info": "Yeah! Now you can see how many points earned",
+        "options": [
+          {
+            "id": 1055,
+            "questionId": 1011,
+            "src": "/assets/img/angelina_jolie_dopple.png",
+            "isAnswer": true
+          },
+          {
+            "id": 1057,
+            "questionId": 1011,
+            "src": "/assets/img/angelina_jolie.png",
+            "isAnswer": false
+          }
+        ],
+        "questionType": {
+          "id": 1,
+          "name": "Multiple Choice",
+          "isActive": true
+        }
+      },
+      {
+        "id": 1011,
+        "name": "Who is NOT Angelina Jolie?",
+        "questionTypeId": 1,
+        "info": "Yeah! Now you can see how many points earned",
+        "options": [
+          {
+            "id": 1055,
+            "questionId": 1011,
+            "src": "/assets/img/angelina_jolie_dopple.png",
+            "isAnswer": true
+          },
+          {
+            "id": 1057,
+            "questionId": 1011,
+            "src": "/assets/img/angelina_jolie.png",
+            "isAnswer": false
+          }
+        ],
+        "questionType": {
+          "id": 1,
+          "name": "Multiple Choice",
+          "isActive": true
+        }
+      },
+      {
+        "id": 1011,
+        "name": "Who is NOT Angelina Jolie?",
+        "questionTypeId": 1,
+        "info": "Yeah! Now you can see how many points earned",
+        "options": [
+          {
+            "id": 1055,
+            "questionId": 1011,
+            "src": "/assets/img/angelina_jolie_dopple.png",
+            "isAnswer": true
+          },
+          {
+            "id": 1057,
+            "questionId": 1011,
+            "src": "/assets/img/angelina_jolie.png",
+            "isAnswer": false
+          }
+        ],
+        "questionType": {
+          "id": 1,
+          "name": "Multiple Choice",
+          "isActive": true
+        }
+      },
+      {
+        "id": 1011,
+        "name": "Who is NOT Angelina Jolie?",
+        "questionTypeId": 1,
+        "info": "Yeah! Now you can see how many points earned",
+        "options": [
+          {
+            "id": 1055,
+            "questionId": 1011,
+            "src": "/assets/img/angelina_jolie_dopple.png",
+            "isAnswer": true
+          },
+          {
+            "id": 1057,
+            "questionId": 1011,
+            "src": "/assets/img/angelina_jolie.png",
+            "isAnswer": false
+          }
+        ],
+        "questionType": {
+          "id": 1,
+          "name": "Multiple Choice",
+          "isActive": true
+        }
+      },
+      {
+        "id": 1011,
+        "name": "Who is NOT Angelina Jolie?",
+        "questionTypeId": 1,
+        "info": "Yeah! Now you can see how many points earned",
+        "options": [
+          {
+            "id": 1055,
+            "questionId": 1011,
+            "src": "/assets/img/angelina_jolie_dopple.png",
+            "isAnswer": true
+          },
+          {
+            "id": 1057,
+            "questionId": 1011,
+            "src": "/assets/img/angelina_jolie.png",
+            "isAnswer": false
+          }
+        ],
+        "questionType": {
+          "id": 1,
+          "name": "Multiple Choice",
+          "isActive": true
+        }
+      },
+      {
+        "id": 1011,
+        "name": "Who is NOT Angelina Jolie?",
+        "questionTypeId": 1,
+        "info": "Yeah! Now you can see how many points earned",
+        "options": [
+          {
+            "id": 1055,
+            "questionId": 1011,
+            "src": "/assets/img/angelina_jolie_dopple.png",
+            "isAnswer": true
+          },
+          {
+            "id": 1057,
+            "questionId": 1011,
+            "src": "/assets/img/angelina_jolie.png",
+            "isAnswer": false
+          }
+        ],
+        "questionType": {
+          "id": 1,
+          "name": "Multiple Choice",
+          "isActive": true
+        }
+      },
+      {
+        "id": 1011,
+        "name": "Who is NOT Angelina Jolie?",
+        "questionTypeId": 1,
+        "info": "Yeah! Now you can see how many points earned",
+        "options": [
+          {
+            "id": 1055,
+            "questionId": 1011,
+            "src": "/assets/img/angelina_jolie_dopple.png",
+            "isAnswer": true
+          },
+          {
+            "id": 1057,
+            "questionId": 1011,
+            "src": "/assets/img/angelina_jolie.png",
+            "isAnswer": false
+          }
+        ],
+        "questionType": {
+          "id": 1,
+          "name": "Multiple Choice",
+          "isActive": true
+        }
+      },
+      {
+        "id": 1011,
+        "name": "Who is NOT Angelina Jolie?",
+        "questionTypeId": 1,
+        "info": "Yeah! Now you can see how many points earned",
+        "options": [
+          {
+            "id": 1055,
+            "questionId": 1011,
+            "src": "/assets/img/angelina_jolie_dopple.png",
+            "isAnswer": true
+          },
+          {
+            "id": 1057,
+            "questionId": 1011,
+            "src": "/assets/img/angelina_jolie.png",
+            "isAnswer": false
+          }
+        ],
+        "questionType": {
+          "id": 1,
+          "name": "Multiple Choice",
+          "isActive": true
+        }
+      }
+    ]
+}

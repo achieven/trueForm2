@@ -3,20 +3,24 @@
   <mat-toolbar-row>
     <h1 class="head-line">PicAPP</h1>
     <div style="display: flex; justify-content: flex-end; flex: 1 1 auto;">
-
-      <button  mat-raised-button
-              class="nav-side"
-               *ngIf="router.url !== '/score'"
-              (click)= "toScores()">
-        score
-    </button>
-
+    <div *ngIf="authService.user | async">
       <button  mat-raised-button
                class="nav-side"
-               *ngIf="router.url == '/score'"
+               *ngIf="router.url !== '/score'"
+               (click)= "toScores()">
+        score
+      </button>
+    </div>
+
+    <div *ngIf="authService.user | async">
+      <button  mat-raised-button
+               class="nav-side"
+               *ngIf="router.url !== '/quiz'"
                (click)= "toQuiz()">
         quiz
       </button>
+    </div>
+
 
     <button   *ngIf = "!(authService.user | async)"
               mat-raised-button 

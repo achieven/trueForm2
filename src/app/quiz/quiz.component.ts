@@ -17,7 +17,7 @@ import {Router} from '@angular/router';
 export class QuizComponent implements OnInit {
   quizes: any[];
   quiz: Quiz = new Quiz(null);
-  mode = 'quiz';
+  mode = 'before';
   quizName: string;
   config: QuizConfig = {
     'allowBack': true,
@@ -56,7 +56,6 @@ export class QuizComponent implements OnInit {
   ngOnInit() {
     this.quizes = this.quizService.getAll();
     this.quizName = this.quizes[0].id;
-    this.loadQuiz(this.quizName);
     this.getScores().subscribe((res) => {
       this.scores = res;
     });
@@ -65,6 +64,14 @@ export class QuizComponent implements OnInit {
   toScores()
   {
     this.router.navigate(['/score']);
+  }
+
+  stop () {
+    this.mode = 'before';
+  }
+
+  start () {
+    this.loadQuiz(this.quizName);
   }
 
   loadQuiz(quizName: string) {
