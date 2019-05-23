@@ -9,6 +9,7 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
 import { Score } from '../score/score.component';
 import {map} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {NavService} from '../services/nav.service';
 
 
 @Component({
@@ -51,7 +52,7 @@ export class QuizComponent implements OnInit {
   scores: Array<Score>;
   private scoresCollection: AngularFirestoreCollection<Score>;
 
-  constructor(private quizService: QuizService, private router: Router, db: AngularFirestore, private authService: AuthService, private dialog: MatDialog) {
+  constructor(private quizService: QuizService, private router: Router, db: AngularFirestore, private authService: AuthService, private dialog: MatDialog, private navService: NavService) {
     this.scoresCollection = db.collection('scores',ref => ref.orderBy('score', 'desc'));
   }
 
@@ -61,6 +62,9 @@ export class QuizComponent implements OnInit {
     this.getScores().subscribe((res) => {
       this.scores = res;
     });
+    this.navService.getNavChangeEmitter().subscribe(value => {
+      this.stop();
+    });
   }
 
   toScores()
@@ -69,7 +73,7 @@ export class QuizComponent implements OnInit {
   }
 
   stop () {
-    this.mode = 'before';
+    clearInterval(this.timer);
   }
 
   start () {
@@ -135,7 +139,7 @@ export class QuizComponent implements OnInit {
   }
 
   answer() {
-    clearInterval(this.timer);
+    this.stop();
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.data = {
